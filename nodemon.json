@@ -1,0 +1,8 @@
+{
+  "watch": ["src"],
+  "ext": "ts",
+  "exec": "npx ts-node -r tsconfig-paths/register ./src/index.ts",
+  "env": {
+    "NODE_ENV": "development"
+  }
+}
