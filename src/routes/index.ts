@@ -1,3 +1,4 @@
+import { config} from 'dotenv';
 import express from 'express';
 import session from 'express-session'
 import passport from 'passport';
@@ -6,9 +7,11 @@ import { Strategy as OpenIDConnectStrategy, Profile, VerifyCallback } from 'pass
 import HomeControllers from 'controllers/HomeController';
 import ProfileController from 'controllers/ProfileController';
 
+config()
+
 const app = express();
 app.use(session({
-  secret: 'keyboard cat',
+  secret: process.env.SESSION_SECRET!,
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false, httpOnly: true, maxAge: 3600000 }
@@ -27,13 +30,13 @@ passport.deserializeUser(function(user: any, done) {
 });
 
 const keycloakStrategy = new OpenIDConnectStrategy({
-  issuer: 'http://localhost:8080/realms/keycloak-2',
-  authorizationURL: 'http://localhost:8080/realms/keycloak-2/protocol/openid-connect/auth',
-  tokenURL: 'http://localhost:8080/realms/keycloak-2/protocol/openid-connect/token',
-  userInfoURL: 'http://localhost:8080/realms/keycloak-2/protocol/openid-connect/userinfo"',
-  clientID: "nodeapp",
-  clientSecret: "u7ygulmsyZLTC20JEuIsoby8Ry1MpNrF",
-  callbackURL: 'http://localhost:3000/callback'
+  issuer: process.env.KC_ISSUER!,
+  authorizationURL: process.env.KC_AUTHORIZATION_URL!,
+  tokenURL: process.env.KC_TOKEN_URL!,
+  userInfoURL: process.env.KC_USERINFO_URL!,
+  clientID: process.env.KC_CLIENT_ID!,
+  clientSecret: process.env.KC_CLIENT_SECRET!,
+  callbackURL: process.env.KC_CALLBACK_URL!
 }, (issuer: string,
   profile: Profile,
   context: object,

@@ -24,3 +24,5 @@ A minimal and easy-to-use boilerplate for integrating **Keycloak authentication*
     ```sh
     yarn dev
     ```
+
+You can find the YouTube tutorial [here](https://www.youtube.com/watch?v=vYEqnXTY5dc&t=4s)

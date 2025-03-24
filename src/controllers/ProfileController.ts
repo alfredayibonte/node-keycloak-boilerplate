@@ -7,7 +7,6 @@ const ProfileController = {
       res.redirect('/login')
     }
     res.status(200).json({ user: req.user });
-
   }
 }
 

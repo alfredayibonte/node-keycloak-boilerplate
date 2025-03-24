@@ -21,14 +21,14 @@ describe('ProfileController', ()=> {
     const response = await request(app).get('/profile');
     expect(response.status).toBe(302);
     expect(response.headers.location).toBe('/login');
-});
+  });
 
-it('should return user data if authenticated', async () => {
+  it('should return user data if authenticated', async () => {
     const response = await request(app)
-        .get('/profile')
-        .set({'authenticated': 'true'});
+    .get('/profile')
+    .set({'authenticated': 'true'});
 
     expect(response.status).toBe(200);
     expect(response.body).toEqual({ user: { id: 1, name: 'Test User' } });
-});
+  });
 })
