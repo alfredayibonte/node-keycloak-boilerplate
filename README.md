@@ -19,8 +19,9 @@ A minimal and easy-to-use boilerplate for integrating **Keycloak authentication*
     ```sh
     yarn
     ```
+3. Create a .env file in the root directory of your project and include the required variables as outlined in the provided .env.example file. Ensure that all necessary values are correctly configured for proper functionality.
 
-3. Start dev server
+4. Start dev server
     ```sh
     yarn dev
     ```
